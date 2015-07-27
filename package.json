@@ -1,0 +1,32 @@
+{
+  "name": "YouKneeFayedAPI",
+  "version": "1.0.0",
+  "description": "REST API for multiple databases",
+  "main": "youkneefayed_server.js",
+  "dependencies": {
+    "csprng": "^0.1.1",
+    "request": "^2.60.0",
+    "restify": "^3.0.3",
+    "sha1": "^1.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bluechipStudentTony/YouKneeFaid-API.git"
+  },
+  "keywords": [
+    "REST",
+    "WEB",
+    "SERVICE",
+    "APP"
+  ],
+  "author": "Anthony Itodo Egwu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bluechipStudentTony/YouKneeFaid-API/issues"
+  },
+  "homepage": "https://github.com/bluechipStudentTony/YouKneeFaid-API"
+}
