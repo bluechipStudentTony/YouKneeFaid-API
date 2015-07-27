@@ -11,8 +11,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node youkneefayed_server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "supervisor youkneefayed_server.js",
+    "test": "jasmine-node --noStack route_tests.js"
   },
   "repository": {
     "type": "git",

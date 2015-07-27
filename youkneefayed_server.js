@@ -16,6 +16,9 @@ var sha1 = require('sha1');
 
 //custom modules for application objects
 var users = require('./app_modules/users.js');
+var posts = require('./app_modules/posts.js');
+var events = require('./app_modules/events.js');
+
 
 
 
@@ -30,11 +33,15 @@ server.listen(8080, function(){
     //console message
     console.log('Server On');
     
-    //get routes
-    server.get('/', function(){
-       console.log('In basic endpoint'); 
-    });
-    
+    //GET ROUTES
+    //user routes
+    server.get('/specificuser', users.getSpecUser);
     server.get('/users', users.getUsers);
+    
+    //user post routes
+    server.get('allposts', posts.getAllPosts);
+    server.get('specpost', posts.getPost);
+   
+    server.get('events', events)
     
 });

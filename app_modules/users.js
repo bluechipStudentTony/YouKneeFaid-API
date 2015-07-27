@@ -7,12 +7,28 @@
 */
 
 
+
+
 var request = require('request');
-var restify = require('restify');
+
 var csprng = require('csprng');
 var sha1 = require('sha1');
 
-exports.getUsers = function(req, res){
+
+
+
+
+//get all users. 
+//Function might turn out to be fairly useless********
+exports.getUsers = function(req, res, next){
     res.send("Blahahahhahah");
     res.end();    
 };
+
+
+
+//get single user
+exports.getSpecUser = function(req, res, next){
+    res.send("Specific user");
+    res.end();
+}
