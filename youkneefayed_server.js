@@ -28,8 +28,11 @@ server.use(restify.authorizationParser());
 server.use(restify.queryParser());
 
 var user_url = '/user';
-var post_url = 'posts';
-var events_url
+var post_url = '/posts';
+var events_url = '/events';
+var anonymous_url = '/anaonymous';
+var businesses_url = '/business';
+
 
 //listen on port. 8080 for start can be changed
 server.listen(8080, function(){
@@ -38,14 +41,16 @@ server.listen(8080, function(){
     
     //GET ROUTES
     //user routes
-    server.get(user_url, users.getSpecUser);
+    //server.get(user_url, users.getSpecUser);
     server.get(user_url, users.getUsers);
     server.get(user_url+'/:userid', users.getUserWith);
     
     //user's post routes
-    server.get('allposts', posts.getAllPosts);
-    server.get('specpost', posts.getPost);
+    server.get(post_url, posts.getAllPosts);
+    server.get(post_url+'/:post_id', posts.getPost);
+    server.get(post_url+'/:posts_by', posts.getPost);
    
-    server.get('events', events.getEvent);
+    server.get(events_url, events.getEvent);
+    server.get(events_url+'/:event_pos', events.getEvents);
     
 });
