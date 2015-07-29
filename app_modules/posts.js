@@ -11,6 +11,8 @@ var request = require('request');
 var csprng = require('csprng');
 var sha1 = require('sha1');
 
+var db_url = 'https://tonyegwu.iriscouch.com/uni_posts/';
+
 
 //get single post
 exports.getPost = function(req, res, next){
