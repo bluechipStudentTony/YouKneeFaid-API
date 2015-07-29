@@ -16,6 +16,19 @@ var sha1 = require('sha1');
 
 var db_url = 'https://tonyegwu.iriscouch.com/uni_people/';
 
+/* user model
+    var user = {
+                id: result_obj._id,
+                firstname: result_obj.firstname,
+                lastname: result_obj.lastname,
+                email: result_obj.email,
+                password: result_obj.password,
+                uni: result_obj.university,
+                friends: []
+            }
+*/
+
+
 //get all users. 
 //Function might turn out to be fairly useless********
 exports.getUsers = function(req, res, next){
@@ -35,9 +48,33 @@ exports.getUsers = function(req, res, next){
 };
 
 
+
+
 exports.getUserWith = function(req, res, next){
-    var jid = req.params.userid;
-    console.log(jid);
+    //request user id from request params
+    var static_user_id = req.params.userid;
+    
+    //request particular user
+    request.get(db_url+static_user_id, function(err, response, body){
+        if(err){
+            //handle errors
+        }else{
+            //if no errors respond to request
+            //create user object with resultant response from database request
+            var result_obj = JSON.parse(body);
+            var user = {
+                id: result_obj._id,
+                firstname: result_obj.firstname,
+                lastname: result_obj.lastname,
+                email: result_obj.email,
+                password: result_obj.password,
+                uni: result_obj.university
+            }
+            //send user to response
+            res.send(user);
+            res.end();
+        }
+    });
 }
 
 

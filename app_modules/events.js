@@ -13,6 +13,18 @@ var sha1 = require('sha1');
 
 var db_url = 'https://tonyegwu.iriscouch.com/uni_posts/';
 
+/* events model
+    var event = {
+        id: event.id,
+        title: event.title,
+        description: event.description,
+        date: event.date,
+        picture: url
+        
+    }
+*/
+
+
 //get multiple events
 exports.getEvents = function(req, res, next){
     res.send("Return multiple events");
@@ -25,3 +37,5 @@ exports.getEvent = function(req, res, next){
     res.send("Return single events");
     
 }
+
+

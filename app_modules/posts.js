@@ -14,6 +14,15 @@ var sha1 = require('sha1');
 var db_url = 'https://tonyegwu.iriscouch.com/uni_posts/';
 
 
+/*
+    var post = {
+        id: post.id,
+        poster: post.posterid,
+        date: post.date,
+        body: post.body
+    }
+*/
+
 //get single post
 exports.getPost = function(req, res, next){
     res.send("Post Gotten");
