@@ -100,3 +100,37 @@ exports.putPost = function(req, res, next){
         
     });
 }
+
+
+//delete posts
+exports.deletePost = function(req, res, next){
+    //
+    var post_id = req.params.postid;
+    
+    request.get(db_url+post_id, function(err, response, body){
+        if(err){
+        
+        }else{
+            if(response.statusCode == 200){
+                //if document exists
+                request.del(db_url+post_id, function(err, response, body){
+                    var response_message = {
+                        type: "Success",
+                        message: "Post has been deleted"
+                    };
+                    res.send(response_message);
+                    res.end();
+                    
+                });
+            }else if(response.statusCode == 404){
+                var response_message = {
+                    type: "failure",
+                    message: "document does not exist"
+                };
+                
+                res.send(response_message);
+                res.end();
+            }
+        }
+    });
+}
