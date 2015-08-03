@@ -45,6 +45,11 @@ server.listen(8080, function(){
     server.get(user_url, users.getUsers);
     server.get(user_url+'/:userid', users.getUserWith);
     
+    server.put(user_url+'/:userid', users.editUser);
+    
+    
+    
+    
     //user's post routes
     server.get(post_url, posts.getAllPosts);
     server.get(post_url+'/:post_id', posts.getPost);

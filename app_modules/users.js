@@ -104,4 +104,43 @@ exports.getSpecUser = function(req, res, next){
         }
     });
     
+
 }
+
+
+//edit user details
+exports.editUser = function(req, res, next){
+    //get user details from request params
+    var userId = req.params.userid;
+    var user_firstname = req.params.firstname;
+    var user_lastname = req.params.lastname;
+    var user_email = req.params.email;
+    var user_password = req.params.password;
+    var user_uni = req.params.uni;
+    
+    //request for particular user
+    request.get(db_url+userId, function(err, response, body){
+        if(err){
+            
+        }else{
+            //var res_user = JSON.parse(body);
+            //check for response status to check if document is available
+            if(response.statusCode == 200){
+                console.log(userId);
+                var res_user = JSON.parse(body);
+                console.log(res_user);
+                console.log(res_user.firstname);
+                res.send(res_user);
+                res.end();
+                //if document exists put in db
+                /*
+                request.put(db_url+userId, function(err, response, body){
+                    
+                });*/
+            }else if (response.statusCode == 404){
+                //handle if document is not found
+            }
+        }
+    });
+}
+    

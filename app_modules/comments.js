@@ -8,5 +8,11 @@
 
 
 /*
-
+    comments model
+    var comment = {
+        id: comment.id,
+        post_id: comment.post,
+        commenter: comment.commentor_id,
+        comment_body: comment.body
+    }
 */
