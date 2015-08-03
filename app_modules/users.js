@@ -158,19 +158,33 @@ exports.deleteUser = function(req, res, next){
             //var res_user = JSON.parse(body);
             //check for response status to check if document is available
             if(response.statusCode == 200){
-                console.log(userId);
-                var res_user = JSON.parse(body);
-                console.log(res_user);
-                console.log(res_user.firstname);
-                res.send(res_user);
-                res.end();
-                //if document exists put in db
-                /*
-                request.put(db_url+userId, function(err, response, body){
-                    
-                });*/
+                request.del(db_url+userId, function(err, respone, body){
+                    if(response.statusCode == 200){
+                        //send response message
+                        var response_message = {
+                            type: "success",
+                            message: "user Successfully deleted"
+                        };
+                        res.send(response_message);
+                        res.end();
+                        
+                    }else if(respone.statusCode == 404){
+                        var response_message = {
+                            type: "Failure", 
+                            message: "Could not delete Document"
+                        };
+                        res.send(response_message);
+                        res.end();
+                    }
+                });
             }else if (response.statusCode == 404){
                 //handle if document is not found
+                var response_message = {
+                    type: "Failure", 
+                    message: "No user document found"
+                };
+                res.send(response_message);
+                res.end();
             }
         }
     });
