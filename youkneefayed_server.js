@@ -44,8 +44,8 @@ server.listen(8080, function(){
     //server.get(user_url, users.getSpecUser);
     server.get(user_url, users.getUsers);
     server.get(user_url+'/:userid', users.getUserWith);
-    
     server.put(user_url+'/:userid', users.editUser);
+    server.del(user_url+'/:userid', users.deleteUser);
     
     
     

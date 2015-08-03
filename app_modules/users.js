@@ -144,3 +144,34 @@ exports.editUser = function(req, res, next){
     });
 }
     
+
+//delete user
+
+exports.deleteUser = function(req, res, next){
+    var userId = req.params.userid;
+    
+    //request user
+    request.get(db_url+userId, function(err, response, body){
+        if(err){
+            
+        }else{
+            //var res_user = JSON.parse(body);
+            //check for response status to check if document is available
+            if(response.statusCode == 200){
+                console.log(userId);
+                var res_user = JSON.parse(body);
+                console.log(res_user);
+                console.log(res_user.firstname);
+                res.send(res_user);
+                res.end();
+                //if document exists put in db
+                /*
+                request.put(db_url+userId, function(err, response, body){
+                    
+                });*/
+            }else if (response.statusCode == 404){
+                //handle if document is not found
+            }
+        }
+    });
+}
