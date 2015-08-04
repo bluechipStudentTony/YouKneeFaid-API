@@ -62,8 +62,13 @@ server.listen(8080, function(){
     
     server.get(events_url, events.getEvent);
     server.get(events_url+'/:event_pos', events.getEvents);
+    server.put(events_url+'/:event_id', events.getEvent);
+    server.del(events_url+'/:event_id', events.deleteEvent);
     
     
     //establishments routes
-    
+    server.get(businesses_url+'/:bus_id', estabs.getEstab);
+    server.get(businesses_url, estabs.getAllEstabs);
+    server.put(businesses_url+'/:bus_id', estabs.putEstabs);
+    server.del(businesses_url+'/:bus_id', estabs.deleteEstabs);
 });
