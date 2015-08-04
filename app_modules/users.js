@@ -53,6 +53,10 @@ exports.getUsers = function(req, res, next){
 exports.getUserWith = function(req, res, next){
     //request user id from request params
     var static_user_id = req.params.userid;
+    /*
+    if(!static_user_id){
+        static_user_id = req.query.userid;
+    }*/
     
     //request particular user
     request.get(db_url+static_user_id, function(err, response, body){

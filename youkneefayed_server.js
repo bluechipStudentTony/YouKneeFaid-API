@@ -27,6 +27,7 @@ server.use(restify.bodyParser());
 server.use(restify.authorizationParser());
 server.use(restify.queryParser());
 
+var alluers = '/allusers';
 var user_url = '/user';
 var post_url = '/posts';
 var events_url = '/events';
@@ -42,8 +43,8 @@ server.listen(8080, function(){
     //GET ROUTES
     //user routes
     //server.get(user_url, users.getSpecUser);
-    server.get(user_url, users.getUsers);
-    server.get(user_url+'/:userid', users.getUserWith);
+    //server.get(user_url, users.getUsers);
+    server.get(user_url, users.getUserWith);
     server.put(user_url+'/:userid', users.editUser);
     server.del(user_url+'/:userid', users.deleteUser);
     
@@ -54,7 +55,10 @@ server.listen(8080, function(){
     server.get(post_url, posts.getAllPosts);
     server.get(post_url+'/:post_id', posts.getPost);
     server.get(post_url+'/:posts_by', posts.getPost);
-   
+    server.put(post_url+'/:post_by', posts.putPost);
+    server.del(post_url+'/:post_id', posts.deletePost)
+    
+    
     server.get(events_url, events.getEvent);
     server.get(events_url+'/:event_pos', events.getEvents);
     

@@ -11,7 +11,7 @@ var request = require('request');
 var csprng = require('csprng');
 var sha1 = require('sha1');
 
-var db_url = 'https://tonyegwu.iriscouch.com/uni_posts/';
+var db_url = 'https://tonyegwu.iriscouch.com/uni_events/';
 
 /* events model
     var event = {
@@ -34,8 +34,49 @@ exports.getEvents = function(req, res, next){
 
 //get single event
 exports.getEvent = function(req, res, next){
-    res.send("Return single events");
+    var event_id = req.params.eventid;
+    
+    
+    //request particular user
+    request.get(db_url+event_id, function(err, response, body){
+        if(err){
+            //handle errors
+        }else{
+            //if no errors respond to request
+            //create event object with resultant response from database request
+            var result_obj = JSON.parse(body);
+            var event = {
+                //event properties
+            }
+            //send user to response
+            res.send(event);
+            res.end();
+        }
+    });
     
 }
 
 
+//put event 
+exports.putEvent = function(req, res, next){
+    var event_id = req.params.event_id;
+    
+    request.get(db_url+event_id, function(err, response, body){
+        if(err){
+            
+        }else{
+            //var res_user = JSON.parse(body);
+            //check for response status to check if document is available
+            if(response.statusCode == 200){
+               
+                //if document exists put in db
+                /*
+                request.put(db_url+userId, function(err, response, body){
+                    
+                });*/
+            }else if (response.statusCode == 404){
+                //handle if document is not found
+            }
+        }
+    });
+}
