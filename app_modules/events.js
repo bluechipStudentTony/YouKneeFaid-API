@@ -80,3 +80,35 @@ exports.putEvent = function(req, res, next){
         }
     });
 }
+
+
+exports.deleteEvent = function(req, res, next){
+    var event_id = req.params.event_id;
+    
+    request.get(db_url+event_id, function(err, response, body){
+        if(err){
+        
+        }else{
+            if(response.statusCode == 200){
+                //if document exists
+                request.del(db_url+event_id, function(err, response, body){
+                    var response_message = {
+                        type: "Success",
+                        message: "Event has been deleted"
+                    };
+                    res.send(response_message);
+                    res.end();
+                    
+                });
+            }else if(response.statusCode == 404){
+                var response_message = {
+                    type: "failure",
+                    message: "Event does not exist"
+                };
+                
+                res.send(response_message);
+                res.end();
+            }
+        }
+    });
+}

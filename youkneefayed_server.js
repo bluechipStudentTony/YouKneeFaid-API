@@ -18,6 +18,7 @@ var sha1 = require('sha1');
 var users = require('./app_modules/users.js');
 var posts = require('./app_modules/posts.js');
 var events = require('./app_modules/events.js');
+var estabs = require('./app_modules/estabs.js');
 
 
 
@@ -61,5 +62,8 @@ server.listen(8080, function(){
     
     server.get(events_url, events.getEvent);
     server.get(events_url+'/:event_pos', events.getEvents);
+    
+    
+    //establishments routes
     
 });
